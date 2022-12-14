@@ -5,8 +5,7 @@ cwd = os.getcwd()
 import time
 def initializer():
     global data
-    myfile_akun = open(f"./env.txt","r")
-    data = myfile_akun.read()
+    data = open(f"./env.txt","r").read()
     
 def generator(id):
     headers = {
@@ -48,15 +47,13 @@ def generator(id):
     print(f"[{time.strftime('%d-%m-%y %X')}] Success Generate: {id}")
     
 if __name__ == '__main__':
-    global list_accountsplit
+    global list_code
     global url
     print(f"[{time.strftime('%d-%m-%y %X')}] Automation Barcodes") 
-    file_list_akun = "data.txt"
-    myfile_akun = open(f"{cwd}/{file_list_akun}","r")
-    akun = myfile_akun.read()
-    list_accountsplit = akun.split("\n")
+    file = "data.txt"
+    list_code  = open(f"{cwd}/{file}","r").read().split("\n")
     target = input(f"[{time.strftime('%d-%m-%y %X')}] Code Type: ")
     with open('env.txt','w') as f: f.write(f'{target}')
     jumlah = int(input(f"[{time.strftime('%d-%m-%y %X')}] Multi Processing: "))
     with Pool(jumlah,initializer) as p:  
-        p.map(generator, list_accountsplit)
+        p.map(generator, list_code)
