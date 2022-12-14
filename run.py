@@ -30,11 +30,11 @@ def generator(id):
             'culture': 'id',
             }
     datas = {
-            'barcodetype': data,
+            'barcodetype': ''.join(x  for x in data if x !=" "),,
             'content': id,
             'filetype': 'PNG',
             'showCodeText': 'true',
-            'filesize': '1',
+            'filesize': '3',
             }
     
     response = requests.post('https://api.products.aspose.app/barcode/generate/generatebarcode', params=params, headers=headers, data=datas).json()
