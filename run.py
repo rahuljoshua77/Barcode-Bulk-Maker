@@ -27,7 +27,7 @@ def generator(id):
             'culture': 'id',
             }
     datas = {
-            'barcodetype': ''.join(x  for x in target if x !=" "),,
+            'barcodetype': ''.join(x  for x in target if x !=" "),
             'content': id,
             'filetype': 'PNG',
             'showCodeText': 'true',
