@@ -1,12 +1,9 @@
 import requests
-from multiprocessing import Pool
+ 
 import os
 cwd = os.getcwd()
 import time
-def initializer():
-    global data
-    data = open(f"./env.txt","r").read()
-    
+ 
 def generator(id):
     headers = {
         'authority': 'api.products.aspose.app',
@@ -30,7 +27,7 @@ def generator(id):
             'culture': 'id',
             }
     datas = {
-            'barcodetype': ''.join(x  for x in data if x !=" "),,
+            'barcodetype': ''.join(x  for x in target if x !=" "),,
             'content': id,
             'filetype': 'PNG',
             'showCodeText': 'true',
@@ -49,11 +46,11 @@ def generator(id):
 if __name__ == '__main__':
     global list_code
     global url
+    global target
     print(f"[{time.strftime('%d-%m-%y %X')}] Automation Barcodes") 
     file = "data.txt"
     list_code  = open(f"{cwd}/{file}","r").read().split("\n")
     target = input(f"[{time.strftime('%d-%m-%y %X')}] Code Type: ")
-    with open('env.txt','w') as f: f.write(f'{target}')
-    jumlah = int(input(f"[{time.strftime('%d-%m-%y %X')}] Multi Processing: "))
-    with Pool(jumlah,initializer) as p:  
-        p.map(generator, list_code)
+    for i in list_code:
+        generator(id)
+     
