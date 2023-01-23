@@ -8,11 +8,7 @@ Barcode-Bulk-Maker
 
   1. Install Python 3.9
   2. install package: pip install requests
-  
-# Note:
 
-  Multi processing is how much process that run in one time
-  
 # List of type code:
 
     QR Code
